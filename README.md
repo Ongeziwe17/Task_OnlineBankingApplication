@@ -20,11 +20,12 @@ Features:
 - Get All Bank Accounts: Retrieve a list of all bank accounts stored in the database.
 
 Technologies Used:
-1. Java: Programming language
-2. Maven: Dependency management and build tool
-3. Spring Boot: Framework for building the application
-4. Spring Data JPA: For database interactions
-5. MySQL database: database for development and testing
+1. IntelliJ Ultimate: Intergrated Development Environment
+2. Java: Programming language
+3. Maven: Dependency management and build tool
+4. Spring Boot: Framework for building the application
+5. Spring Data JPA: For database interactions
+6. MySQL database: database for development and testing
 
 
 Getting Started
