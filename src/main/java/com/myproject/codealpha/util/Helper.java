@@ -20,6 +20,8 @@ public class Helper {
         final String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
         final Pattern pattern = Pattern.compile(emailPattern);
         final Matcher matcher = pattern.matcher(emailAddress);
+        if(matcher.matches()) System.out.println("Email format is correct");
+        else{ System.out.println("Incorrect email format"); }
         return matcher.matches();
     }
 }

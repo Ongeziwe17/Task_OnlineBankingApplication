@@ -30,6 +30,14 @@ public class Contact {
         return Objects.equals(email, contact.email) && Objects.equals(mobile, contact.mobile);
     }
     @Override
+    public String toString() {
+        return "Contact{" +
+                "email='" + email + '\'' +
+                ", mobile='" + mobile + '\'' +
+                '}';
+    }
+
+    @Override
     public int hashCode() { return Objects.hash(email, mobile); }
 
     public static class Builder{
