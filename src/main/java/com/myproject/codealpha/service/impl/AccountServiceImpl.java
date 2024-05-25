@@ -48,6 +48,16 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public AccountDTO withdraw(long accountNumber, double amount) {
+        Account account = repository.findById(accountNumber).orElseThrow(()->new NoSuchElementException("No account with such id exist"));
+        if(account.getBalance() < amount) throw new RuntimeException("Insufficient funds");
+        double total = account.getBalance() - amount;
+        account.setBalance(total);
+        Account accountBalanceSaved = repository.save(account);
+        return AccountMapper.mapToAccountDTO(accountBalanceSaved);
+    }
+
+    @Override
     public void delete(long accountNumber) {
         AccountDTO accountToDelete = read(accountNumber);
         Account account = AccountMapper.mapToAccount(accountToDelete);

@@ -1,7 +1,6 @@
 package com.myproject.codealpha.controller;
 
 import com.myproject.codealpha.dto.AccountDTO;
-import com.myproject.codealpha.dto.AccountHolderDTO;
 import com.myproject.codealpha.service.impl.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,20 +34,20 @@ public class AccountController {
         AccountDTO accountDTOUpdated = accountService.update(accountDTO);
         return ResponseEntity.ok(accountDTOUpdated);
     }
-
-    // Deposit into account using request parameter
-    @PutMapping("/depositIntoAccount/{accountNumber}")
-    public ResponseEntity<AccountDTO> depositAccountDTO(@PathVariable long accountNumber, @RequestParam double amount) {
-        AccountDTO accountDTO = accountService.deposit(accountNumber, amount);
-        return ResponseEntity.ok(accountDTO);
-    }
-    // Deposit into account using request body
-    @PutMapping("/deposit/{accountNumber}")
+    @PutMapping("/{accountNumber}/deposit")
     public ResponseEntity<AccountDTO> depositIntoAccountDTO(@PathVariable long accountNumber, @RequestBody Map<String, Double> request) {
         if (request == null || !request.containsKey("amount")) return ResponseEntity.badRequest().build();
         double amount = request.get("amount");
         if (amount <= 0) return ResponseEntity.badRequest().build();
         AccountDTO accountDTO = accountService.deposit(accountNumber, amount);
+        return ResponseEntity.ok(accountDTO);
+    }
+    @PutMapping("/{accountNumber}/withdraw")
+    public ResponseEntity<AccountDTO> withdrawFromAccountDTO(@PathVariable long accountNumber, @RequestBody Map<String, Double> request){
+        if(request == null || !request.containsKey("amount")) return ResponseEntity.badRequest().build();
+        double amount = request.get("amount");
+        if(amount <= 0) return ResponseEntity.badRequest().build();
+        AccountDTO accountDTO = accountService.withdraw(accountNumber, amount);
         return ResponseEntity.ok(accountDTO);
     }
 

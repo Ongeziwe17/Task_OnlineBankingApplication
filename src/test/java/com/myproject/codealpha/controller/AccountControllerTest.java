@@ -95,46 +95,13 @@ class AccountControllerTest {
 
     @Test
     @Order(4)
-    void depositAccountDTO() {
-//        long depositToAccountNumber = accountDTO2.getAccountNumber();
-//        double initialBalance = accountDTO2.getBalance();
-//        String depositURL = Base_URL + "/deposit/" + depositToAccountNumber + "?amount=15000.00";
-//        System.out.println("URL: " + depositURL);
-//        ResponseEntity<AccountDTO> response = restTemplate.exchange(depositURL, HttpMethod.PUT, null, AccountDTO.class);
-//        assertNotNull(response);
-//        if (response.getBody() != null) assertEquals(initialBalance + 15000.00, response.getBody().getBalance());
-//        System.out.println(response.getStatusCode());
-        long depositToAccountNumber = accountDTO2.getAccountNumber();
-        double initialBalance = accountDTO2.getBalance();
-        String depositURL = Base_URL + "/depositIntoAccount/" + depositToAccountNumber + "?amount=15000.00";
-        System.out.println("URL: " + depositURL);
-        ResponseEntity<AccountDTO> response = restTemplate.exchange(depositURL, HttpMethod.PUT, null, AccountDTO.class);
-        assertNotNull(response);
-        if (response.getBody() != null) assertEquals(initialBalance + 15000.00, response.getBody().getBalance());
-        System.out.println(response.getStatusCode());
-    }
-
-    @Test
-    @Order(5)
     void depositIntoAccountDTO() {
-//        long depositToAccountNumber = accountDTO1.getAccountNumber();
-//        double initialBalance = accountDTO1.getBalance();
-//        double depositAmount = 15000.00;
-//        Map<String, Double> depositRequest = new HashMap<>();
-//        depositRequest.put("amount", depositAmount);
-//        String depositURL = Base_URL + "/deposit/" + depositToAccountNumber;
-//        System.out.println("URL: " + depositURL);
-//        HttpEntity<Map<String, Double>> entity = new HttpEntity<>(depositRequest);
-//        ResponseEntity<AccountDTO> response = restTemplate.exchange(depositURL, HttpMethod.PUT, entity, AccountDTO.class);
-//        assertNotNull(response);
-//        if(response.getBody() != null) assertEquals(initialBalance + depositAmount, response.getBody().getBalance());
-//        System.out.println(response.getBody());
         long depositToAccountNumber = accountDTO1.getAccountNumber();
         double initialBalance = accountDTO1.getBalance();
         double depositAmount = 15000.00;
         Map<String, Double> depositRequest = new HashMap<>();
         depositRequest.put("amount", depositAmount);
-        String depositURL = Base_URL + "/deposit/" + depositToAccountNumber;
+        String depositURL = Base_URL + "/" + depositToAccountNumber + "/deposit";
         System.out.println("URL: " + depositURL);
         HttpEntity<Map<String, Double>> entity = new HttpEntity<>(depositRequest);
         ResponseEntity<AccountDTO> response = restTemplate.exchange(depositURL, HttpMethod.PUT, entity, AccountDTO.class);
@@ -143,6 +110,22 @@ class AccountControllerTest {
         System.out.println(response.getBody());
     }
 
+    @Test
+    @Order(5)
+    void withdrawFromAccountDTO() {
+        long withdrawFromAccountNumber = accountDTO2.getAccountNumber();
+        double initialBalance = accountDTO2.getBalance();
+        double withdrawAmount = 5000.00;
+        Map<String, Double> withdrawRequest = new HashMap<>();
+        withdrawRequest.put("amount", withdrawAmount);
+        String withdrawURL = Base_URL + "/" + withdrawFromAccountNumber + "/withdraw";
+        System.out.println("URL: " + withdrawURL);
+        HttpEntity<Map<String, Double>> entity = new HttpEntity<>(withdrawRequest);
+        ResponseEntity<AccountDTO> response = restTemplate.exchange(withdrawURL, HttpMethod.PUT, entity, AccountDTO.class);
+        assertNotNull(response);
+        if(response.getBody() != null) assertEquals(initialBalance - withdrawAmount, response.getBody().getBalance());
+        System.out.println(response.getBody());
+    }
     @Test
     @Disabled
     @Order(7)
