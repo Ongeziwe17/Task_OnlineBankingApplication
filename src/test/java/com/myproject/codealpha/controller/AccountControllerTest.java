@@ -127,7 +127,6 @@ class AccountControllerTest {
         System.out.println(response.getBody());
     }
     @Test
-    @Disabled
     @Order(7)
     void deleteAccountDTO() {
         String accountNumberToBeDeleted = String.valueOf(accountDTO3.getAccountNumber());
