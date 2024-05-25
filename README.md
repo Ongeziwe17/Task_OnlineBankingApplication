@@ -12,27 +12,27 @@ The application allows for:
 All these functionalities are tested using Postman and reflect on MySQL database.
 
 Features:
-Create Bank Account: Add a new bank account with initial details.
-Read Bank Account by ID: Fetch the details of a specific bank account using its unique ID.
-Update Bank Account: Modify existing bank account information.
-Make Deposits and Withdrawals: Handle transactions to deposit or withdraw money from a bank account.
-Delete Bank Account: Remove a bank account from the system.
-Get All Bank Accounts: Retrieve a list of all bank accounts stored in the database.
+- Create Bank Account: Add a new bank account with initial details.
+- Read Bank Account by ID: Fetch the details of a specific bank account using its unique ID.
+- Update Bank Account: Modify existing bank account information.
+- Make Deposits and Withdrawals: Handle transactions to deposit or withdraw money from a bank account.
+- Delete Bank Account: Remove a bank account from the system.
+- Get All Bank Accounts: Retrieve a list of all bank accounts stored in the database.
 
 Technologies Used:
-Java: Programming language
-Maven: Dependency management and build tool
-Spring Boot: Framework for building the application
-Spring Data JPA: For database interactions
-MySQL database: database for development and testing
+1. Java: Programming language
+2. Maven: Dependency management and build tool
+3. Spring Boot: Framework for building the application
+4. Spring Data JPA: For database interactions
+5. MySQL database: database for development and testing
 
 
 Getting Started
 Prerequisites:
-Java Development Kit (JDK) 8 or higher
-Maven 3.6 or higher
-Spring Boot Framework
-MySQL Workbench
+1. Java Development Kit (JDK) 8 or higher
+2. Maven 3.6 or higher
+3. Spring Boot Framework
+4. MySQL Workbench
 
 For database access, please review the application.properties file and update the database username and password with your details.
 
