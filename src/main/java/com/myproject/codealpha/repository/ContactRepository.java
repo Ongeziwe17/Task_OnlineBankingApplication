@@ -1,2 +1,9 @@
-package com.myproject.codealpha.repository;public class ContactRepository {
+package com.myproject.codealpha.repository;
+
+import com.myproject.codealpha.domain.Contact;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ContactRepository extends JpaRepository<Contact, String> {
 }

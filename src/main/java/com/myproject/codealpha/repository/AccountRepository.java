@@ -1,2 +1,9 @@
-package com.myproject.codealpha.repository;public interface AccountRepository {
+package com.myproject.codealpha.repository;
+
+import com.myproject.codealpha.domain.Account;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface AccountRepository extends JpaRepository<Account, Long> {
 }
